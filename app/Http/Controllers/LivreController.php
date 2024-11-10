@@ -57,7 +57,9 @@ class LivreController extends Controller
      */
     public function update(Request $request, string $id)
     {
-       
+       $livre=Livre::find($id);
+       $livre->update($request->all());
+       return redirect()->route('livre.index');
     }
 
     /**
@@ -65,6 +67,8 @@ class LivreController extends Controller
      */
     public function destroy(string $id)
     {
-       
+       $livre=Livre::find($id);
+       $livre->delete();
+       return redirect()->route('livre.index');
     }
 }
